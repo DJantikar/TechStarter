@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <title>Techstarter</title>
@@ -7,8 +8,89 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 </head>
+
 <body>
-  <app-root></app-root>
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+          aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+        <a class="navbar-brand navbar-center" href="#">TechStarter</a>
+      </div>
+      <div id="navbar" class="collapse navbar-collapse">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#">Login</a></li>
+          <li><a href="#about">Sign In</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-left">
+          <!-- find a icon -->
+          <li><a href="#">Explore</a></li>
+          <li><a href="#">Start a Project</a></li>
+          <li><a href="#about">About Us</a></li>
+        </ul>
+      </div>
+      <!--/.nav-collapse -->
+    </div>
+  </nav>
+  <br><br><br><br>
+
+  <div class="container">
+    <app-root></app-root>
+  </div>
+  <script>
+    (function () {
+      $(function () {
+        var toggle;
+        return toggle = new Toggle('.toggle');
+      });
+
+      this.Toggle = (function () {
+        Toggle.prototype.el = null;
+
+        Toggle.prototype.tabs = null;
+
+        Toggle.prototype.panels = null;
+
+        function Toggle(toggleClass) {
+          this.el = $(toggleClass);
+          this.tabs = this.el.find(".tab");
+          this.panels = this.el.find(".panel");
+          this.bind();
+        }
+
+        Toggle.prototype.show = function (index) {
+          var activePanel, activeTab;
+          this.tabs.removeClass('active');
+          activeTab = this.tabs.get(index);
+          $(activeTab).addClass('active');
+          this.panels.hide();
+          activePanel = this.panels.get(index);
+          return $(activePanel).show();
+        };
+
+        Toggle.prototype.bind = function () {
+          return this.tabs.unbind('click').bind('click', (function (_this) {
+            return function (e) {
+              return _this.show($(e.currentTarget).index());
+            };
+          })(this));
+        };
+
+        return Toggle;
+
+      })();
+
+    }).call(this);
+
+  </script>
 </body>
+
 </html>
