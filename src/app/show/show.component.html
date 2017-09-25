@@ -1,0 +1,12 @@
+<div class="row">
+  
+  <div class="col-xs-10">
+    <hr>
+    <ul class="list-group">
+      <a 
+        *ngFor="let d of donations"
+        class="list-group-item" 
+        style="cursor : pointer">{{d.name}}  donated  {{d.amount}}$</a>
+    </ul>
+  </div>
+</div>
